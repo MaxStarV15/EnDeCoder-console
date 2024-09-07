@@ -1,6 +1,8 @@
 from random import choice
 import re
+
 from .file_moves import Moves
+from config_data import RANDOM_KEY_LENGTH_MIN, RANDOM_KEY_LENGTH_MAX
 
 
 class EnDeFile:
@@ -37,11 +39,14 @@ class EnDeFile:
 		"sbl": Moves.shift_bit_right
 	}
 
+	random_key_lenght_min = RANDOM_KEY_LENGTH_MIN
+	random_key_lenght_max = RANDOM_KEY_LENGTH_MAX
+
 
 	@classmethod
 	def generate_random_key(cls) -> str:
 		""" Генерирует случайный ключ """
-		return ''.join(choice(cls.commands_list) for i in range(3, 10))
+		return ''.join(choice(cls.commands_list) for i in range(cls.random_key_lenght_min, cls.random_key_lenght_max))
 
 
 	@classmethod

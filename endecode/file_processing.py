@@ -42,8 +42,6 @@ class ByteThread(Thread):
 		self.lock: NumLock = lock
 		self.encode: bool = encode
 
-		# self.percent: int = 0
-		# self.work: int = len(bytes_)
 		self.done: bool = False
 		self.done_endecoding: bool = False
 
@@ -52,6 +50,7 @@ class ByteThread(Thread):
 		
 		if self.done:
 			return
+		
 		# En/Decoding
 		endecoded_bytes = bytes()
 			
@@ -61,6 +60,7 @@ class ByteThread(Thread):
 			endecoded_bytes: bytes = EnDeFile.decode_bytes(self.key, self.bytes)
 
 		self.done_endecoding = True
+
 		# try to write
 		while True:
 			with self.lock:
@@ -93,10 +93,6 @@ class FileProcess():
 
 		size: int = os.path.getsize(self.filepath) # Размер файла
 		filepart_size = self.giga_part_size // self.count_threads # Сколько байтов даётся потоку
-
-		### ЕСЛИ БУТУТ ПРОБЛЕМЫ С НЕДОПИСАНИЕМ БАЙТОВ, ТО ТУТ С + ПРОБЛЕМЫ
-		#                          |
-		#                          V
 		
 		max_work: int = (size//filepart_size)+1 # Число потоков на размер файла
 		now_threads_done: int = 0
