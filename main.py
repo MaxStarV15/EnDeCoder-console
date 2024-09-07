@@ -7,7 +7,7 @@ from progress_bar import get_volume
 from config_data import PARTS_OF_GIGA, COUNT_THREADS
 
 
-def welcome():
+def welcome() -> None:
 	art.tprint("[ EnDeCoder ]")
 
 	print("- by MaxStarV15\n\n")
@@ -15,7 +15,7 @@ def welcome():
 	print('! Файл должен находиться в той же папке, что и программа !\n')
 
 
-def config():
+def config() -> None:
 	print("[ CONFIG ]")
 	print("\tПамяти в оперативке: ~", get_volume(1_073_741_824//PARTS_OF_GIGA))
 	print("\tВ одном потоке: ~", get_volume(1_073_741_824//PARTS_OF_GIGA//COUNT_THREADS))
@@ -51,7 +51,9 @@ def get_result_filepath(en: bool, path: str) -> str:
 		return pattern_de.format(name, exp)
 
 
-def get_key(en: bool):
+def get_key(en: bool) -> str:
+
+	print("\nКоманды:", *EnDeFile.commands_list)
 
 	if en:
 		while True:
@@ -78,8 +80,7 @@ def get_key(en: bool):
 				continue
 
 
-def show_input(en, filepath, result_filepath, key):
-
+def show_input(en, filepath, result_filepath, key) -> None:
 	en = "кодирование" if en else "расшифровка"
 
 	# pattern = "\n\t{:15<}\nТип шифрования{:5>};\nФайл:\t{};\nРезультативный файл:\t{};\nКлюч:\t{};\n"
@@ -107,7 +108,7 @@ def yes_or_no() -> bool:
 
 
 def main():
-
+	""" Основаная программа """
 	welcome()
 	config()
 
@@ -131,8 +132,7 @@ def main():
 	fp.run()
 
 
-
-
 if __name__ == "__main__":
 	main()
+	
 	input()

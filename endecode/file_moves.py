@@ -1,6 +1,6 @@
 
 class Moves:
-	# "ia", "ra", "sp", "rp", "d", "ser", "sel", "spr", "spl", "sbr", "sbl"
+	# "ia", "ra", "mp", "rp", "d", "ser", "sel", "spr", "spl", "sbr", "sbl"
 	
 	@classmethod
 	def invert_all(cls, byte: bytes):
