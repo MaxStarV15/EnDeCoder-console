@@ -82,8 +82,6 @@ def get_key(en: bool) -> str:
 
 def show_input(en, filepath, result_filepath, key) -> None:
 	en = "кодирование" if en else "расшифровка"
-
-	# pattern = "\n\t{:15<}\nТип шифрования{:5>};\nФайл:\t{};\nРезультативный файл:\t{};\nКлюч:\t{};\n"
 	
 	pattern = (
 		f"",
