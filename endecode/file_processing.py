@@ -3,6 +3,7 @@ from multiprocessing import Process
 import os
 import time
 from typing import List
+from art import tprint
 
 from .file_work import EnDeFile
 from progress_bar import prog_bar, check_bar, get_volume
@@ -146,6 +147,10 @@ class FileProcess():
 
 				lock.reset()
 				self.threads = list()
+		os.system("cls")
 
+		tprint("[ DONE ]")
+
+		print(f"Ваш результативный файл лежит по пути: \t{self.result_path}\n")
 		print("\n> \tПрограмма завершилась")
 		print(f"\n\tЗанятое время: {time.time() - start:.2f}s")
